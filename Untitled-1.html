@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unreleased Consoles</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #f1f1f1;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #4cafef;
+    }
+    select {
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
+      margin: 20px 0;
+    }
+    .info {
+      margin-top: 20px;
+      background: #222;
+      padding: 15px;
+      border-radius: 10px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .info img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .info h2 {
+      color: #ffd700;
+    }
+  </style>
+</head>
+<body>
+  <h1>Unreleased Consoles</h1>
+  <p>Select a console to learn more:</p>
+
+  <select id="consoleSelect">
+    <option value="">-- Choose a console --</option>
+    <option value="nps">Nintendo PlayStation</option>
+    <option value="neptune">Sega Neptune</option>
+    <option value="jaguar">Atari Jaguar Duo</option>
+    <option value="vb2">Virtual Boy Successor</option>
+  </select>
+
+  <div class="info" id="consoleInfo">
+    <p>No console selected.</p>
+  </div>
+
+  <script>
+    const data = {
+      nps: {
+        name: "Nintendo PlayStation",
+        img: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Nintendo_PlayStation_prototype.jpg",
+        desc: "A prototype collaboration between Sony and Nintendo in the early 1990s. It never launched."
+      },
+      neptune: {
+        name: "Sega Neptune",
+        img: "https://upload.wikimedia.org/wikipedia/commons/1/1f/Sega_Neptune.jpg",
+        desc: "A planned combo Genesis/32X console. Canceled before release."
+      },
+      jaguar: {
+        name: "Atari Jaguar Duo",
+        img: "https://upload.wikimedia.org/wikipedia/commons/5/54/Atari_Jaguar_Duo.jpg",
+        desc: "Combined Jaguar and Jaguar CD into one console. It never made it to market."
+      },
+      vb2: {
+        name: "Virtual Boy Successor",
+        img: "https://upload.wikimedia.org/wikipedia/commons/f/f5/NEC_VR32.jpg",
+        desc: "Planned upgrades to Nintendo’s Virtual Boy, but canceled after poor sales of the original."
+      }
+    };
+
+    const select = document.getElementById("consoleSelect");
+    const infoDiv = document.getElementById("consoleInfo");
+
+    select.addEventListener("change", () => {
+      const choice = select.value;
+      if (choice && data[choice]) {
+        const c = data[choice];
+        infoDiv.innerHTML = `
+          <img src="${c.img}" alt="${c.name}">
+          <h2>${c.name}</h2>
+          <p>${c.desc}</p>
+        `;
+      } else {
+        infoDiv.innerHTML = "<p>No console selected.</p>";
+      }
+    });
+  </script>
+</body>
+</html>
